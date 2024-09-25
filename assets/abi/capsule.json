@@ -1,0 +1,1058 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "AddressIsNull",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ArrayLengthMismatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CallerIsNotAssetKeyHolder",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CallerIsNotAssetKeyOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotAuthorized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotReceiver",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotRelayer",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PackageIsStillLocked",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "PasswordMismatched",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ReceiverIsMissing",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum PostOfficeStorage.PackageStatus",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "name": "WrongPackageStatus",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "oldCapsuleProxy",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newCapsuleProxy",
+        "type": "address"
+      }
+    ],
+    "name": "CapsuleProxyUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferStarted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "keyAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "keyId",
+        "type": "uint256"
+      }
+    ],
+    "name": "PackageAssetKeyUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "PackageCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "PackageDelivered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "oldPackageManager",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newPackageManager",
+        "type": "address"
+      }
+    ],
+    "name": "PackageManagerUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "passwordHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "PackagePasswordHashUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "oldReceiver",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newReceiver",
+        "type": "address"
+      }
+    ],
+    "name": "PackageReceiverUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "burnFrom",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "PackageRedeemed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "PackageShipped",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packageId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "unlockTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "PackageUnlockTimestampUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "oldRelayer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newRelayer",
+        "type": "address"
+      }
+    ],
+    "name": "RelayerUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "VERSION",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "contentReceiver_",
+        "type": "address"
+      }
+    ],
+    "name": "cancelPackage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "capsuleManager",
+    "outputs": [
+      {
+        "internalType": "contract ICapsuleManager",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "cpCollection",
+    "outputs": [
+      {
+        "internalType": "contract ICapsule",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      }
+    ],
+    "name": "deliverPackage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract ICapsuleManager",
+        "name": "capsuleManager_",
+        "type": "address"
+      },
+      {
+        "internalType": "contract ICapsule",
+        "name": "capsuleCollection_",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "packageInfo",
+    "outputs": [
+      {
+        "internalType": "enum PostOfficeStorage.PackageStatus",
+        "name": "packageStatus",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "manager",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "passwordHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "unlockTimestamp",
+            "type": "uint64"
+          },
+          {
+            "internalType": "address",
+            "name": "keyAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.SecurityInfo",
+        "name": "securityInfo",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pendingOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "rawPassword_",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "salt_",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "shouldRedeem_",
+        "type": "bool"
+      }
+    ],
+    "name": "pickup",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "rawPassword_",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "salt_",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "shouldRedeem_",
+        "type": "bool"
+      },
+      {
+        "internalType": "address",
+        "name": "receiver_",
+        "type": "address"
+      }
+    ],
+    "name": "privatePickup",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "receiver_",
+        "type": "address"
+      }
+    ],
+    "name": "redeemPackage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "relayer",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      }
+    ],
+    "name": "securityInfo",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "passwordHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "unlockTimestamp",
+            "type": "uint64"
+          },
+          {
+            "internalType": "address",
+            "name": "keyAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.SecurityInfo",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes[]",
+            "name": "tokenData",
+            "type": "bytes[]"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.CapsuleContent",
+        "name": "packageContent_",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "passwordHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "unlockTimestamp",
+            "type": "uint64"
+          },
+          {
+            "internalType": "address",
+            "name": "keyAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.SecurityInfo",
+        "name": "securityInfo_",
+        "type": "tuple"
+      },
+      {
+        "internalType": "address",
+        "name": "receiver_",
+        "type": "address"
+      }
+    ],
+    "name": "shipPackage",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes[]",
+            "name": "tokenData",
+            "type": "bytes[]"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.CapsuleContent[]",
+        "name": "packageContent_",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "passwordHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "unlockTimestamp",
+            "type": "uint64"
+          },
+          {
+            "internalType": "address",
+            "name": "keyAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct PostOfficeStorage.SecurityInfo[]",
+        "name": "securityInfo_",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "address[]",
+        "name": "receiver_",
+        "type": "address[]"
+      }
+    ],
+    "name": "shipPackages",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "_packageIds",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      }
+    ],
+    "name": "sweep",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner_",
+        "type": "address"
+      }
+    ],
+    "name": "transferCollectionOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "baseURI_",
+        "type": "string"
+      }
+    ],
+    "name": "updateBaseURI",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_newBurner",
+        "type": "address"
+      }
+    ],
+    "name": "updateCollectionBurner",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "metamaster_",
+        "type": "address"
+      }
+    ],
+    "name": "updateMetamaster",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "newKeyAddress_",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "newKeyId_",
+        "type": "uint256"
+      }
+    ],
+    "name": "updatePackageAssetKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "newPackageManager_",
+        "type": "address"
+      }
+    ],
+    "name": "updatePackageManager",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "newPasswordHash_",
+        "type": "bytes32"
+      }
+    ],
+    "name": "updatePackagePasswordHash",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "newReceiver_",
+        "type": "address"
+      }
+    ],
+    "name": "updatePackageReceiver",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "packageId_",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint64",
+        "name": "newUnlockTimestamp_",
+        "type": "uint64"
+      }
+    ],
+    "name": "updatePackageUnlockTimestamp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newRelayer_",
+        "type": "address"
+      }
+    ],
+    "name": "updateRelayer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "royaltyReceiver_",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "royaltyRate_",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateRoyaltyConfig",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

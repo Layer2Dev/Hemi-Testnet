@@ -1,0 +1,10 @@
+aiohttp==3.9.5
+aiohttp_socks==0.8.4
+colorama==0.4.6
+eth_abi==5.1.0
+eth_typing==5.0.0
+loguru==0.7.2
+pydantic==2.9.2
+pyuseragents==1.0.5
+typing_extensions==4.12.2
+web3==7.2.0
