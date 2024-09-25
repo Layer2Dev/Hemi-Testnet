@@ -35,7 +35,6 @@ class HemiBridgeConfig:
     amount = 0.1
     use_percentage = True
     bridge_percentage = [0.2, 0.3]
-    # https://app.hemi.xyz/en/tunnel/?operation=deposit
 
 
 # --- Swap config --- #
