@@ -27,7 +27,6 @@ class Capsule(Account, RequestClient):
         return f'[{self.__class__.__name__}] | [{self.wallet_address}] | Creating capsule...'
 
     async def create_capsule(self) -> None:
-        url = await self.create_metadata()
         contract = self.load_contract(
             address=CapsuleData.address,
             web3=self.web3,
@@ -45,7 +44,7 @@ class Capsule(Account, RequestClient):
             if token_balance != 0:
                 break
             token_list.remove(token)
-
+        url = await self.create_metadata(token)
         amount = int(token_balance * random.uniform(0.1, 0.3))
         await self.approve_token(
             amount=amount,
@@ -89,7 +88,7 @@ class Capsule(Account, RequestClient):
                 f' TX: https://testnet.explorer.hemi.xyz/tx/{tx_hash}'
             )
 
-    async def create_metadata(self) -> str:
+    async def create_metadata(self, token: str) -> str:
         headers = {
             'accept': 'application/json, text/plain, */*',
             'accept-language': 'ru,en-US;q=0.9,en;q=0.8',
@@ -101,7 +100,7 @@ class Capsule(Account, RequestClient):
         }
 
         json_data = {
-            'name': 'Hemi Tunneled DAI Transaction',
+            'name': f'Hemi Tunneled {token} Transaction',
         }
 
         response_json = await self.make_request(
