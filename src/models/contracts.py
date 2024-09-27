@@ -28,3 +28,9 @@ class HemiSwapData:
 class CapsuleData:
     address: str = '0x1E8db2Fc15Bf1207784763219e00e98D0BA82362'
     abi: str = open('./assets/abi/capsule.json', 'r').read()
+
+
+@dataclass
+class GnosisSafeData:
+    address: str = '0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2'
+    abi: str = open('./assets/abi/safe.json', 'r').read()

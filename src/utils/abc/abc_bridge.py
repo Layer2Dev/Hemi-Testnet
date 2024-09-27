@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-from asyncio import sleep
-from distutils.command.config import config
 from typing import Optional
+from asyncio import sleep
 
 from web3.contract import AsyncContract
 from web3.types import TxParams

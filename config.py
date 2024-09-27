@@ -4,19 +4,19 @@ SLIPPAGE = 0.02
 
 PAUSE_BETWEEN_MODULES = [10, 20]
 PAUSE_BETWEEN_WALLETS = [10, 20]
-RETRIES = 3
-PAUSE_BETWEEN_RETRIES = 1
+RETRIES = 10
+PAUSE_BETWEEN_RETRIES = 60
 
 # --- Bridges --- #
-bridge_to_sepolia = True
-bridge_to_hemi = True
+bridge_to_sepolia = False
+bridge_to_hemi = False
 
 # --- Swaps --- #
-hemiswap = True
+hemiswap = False
 
 # --- Other --- #
-create_capsule = True
-
+create_capsule = False
+create_safe = True
 
 # --- Bridge config ---#
 
@@ -30,7 +30,7 @@ class TestnetBridgeConfig:
 
 
 class HemiBridgeConfig:
-    from_chain = 'SEPOLIA'
+    from_chain = 'SEPOLIA'  # Only Sepolia
     to_chain = 'HEMI'
     amount = 0.1
     use_percentage = True

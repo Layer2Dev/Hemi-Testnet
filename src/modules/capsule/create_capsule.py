@@ -1,16 +1,12 @@
 import random
 
 import pyuseragents
-from aiohttp import ClientSession
-from asyncio import sleep
-
 from eth_abi import encode
 from loguru import logger
-from src.utils.proxy_manager import Proxy
 from src.utils.request_client.request_client import RequestClient
-from src.utils.user.account import Account
-from src.utils.data.chains import chain_mapping
 from src.models.contracts import CapsuleData
+from src.utils.user.account import Account
+from src.utils.proxy_manager import Proxy
 from src.utils.data.tokens import tokens
 
 

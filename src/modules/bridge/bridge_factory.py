@@ -1,18 +1,14 @@
 from typing import Callable, Optional
-from eth_typing import ChecksumAddress
+
 from web3.contract import AsyncContract
 from web3.types import TxParams
 
 from src.modules.bridge.hemi_bridge.hemi_bridge_tx import create_hemi_bridge_tx
 from src.modules.bridge.sepolia_bridge.sepolia_bridge_tx import create_sepolia_bridge_tx
-
 from src.utils.abc.abc_bridge import ABCBridge
 from src.models.bridge import BridgeConfig
 from src.models.contracts import *
 from src.utils.proxy_manager import Proxy
-from loguru import logger
-
-from src.models.token import Token
 
 
 def create_bridge_class(

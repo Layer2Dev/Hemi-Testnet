@@ -1,22 +1,25 @@
-import random
-from asyncio import wait_for, TimeoutError, gather, create_task, sleep
-from typing import Any
-
 from loguru import logger
 
 from config import *
-from src.models.bridge import BridgeConfig
-# from src.models.testnet_bridge import TestnetBridgeConfig
-from src.models.chain import Chain
-from src.models.token import Token
 from src.modules.bridge.bridge_factory import HemiBridge, SepoliaBridge
 from src.modules.capsule.create_capsule import Capsule
-# from src.modules.bridge.testnet_bridge import SepoliaBridge
+from src.modules.safe.create_safe import GnosisSafe
 from src.modules.swap.swap_factory import HemiSwap
+from src.models.bridge import BridgeConfig
+from src.models.chain import Chain
+from src.models.token import Token
 
 from src.utils.data.chains import chain_mapping
-
 from src.utils.proxy_manager import Proxy
+
+
+async def process_create_safe(private_key: str, proxy: Proxy | None) -> None:
+    safe = GnosisSafe(
+        private_key=private_key,
+        proxy=proxy
+    )
+    logger.debug(safe)
+    await safe.create_safe()
 
 
 async def process_testnet_bridge(private_key: str, proxy: Proxy | None) -> None:

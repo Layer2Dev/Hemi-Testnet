@@ -1,5 +1,4 @@
 import json
-
 from time import time
 from typing import List, Optional, Callable
 from asyncio import sleep
@@ -7,7 +6,6 @@ from asyncio import sleep
 import pyuseragents
 from eth_abi import encode
 from eth_typing import ChecksumAddress
-from web3 import AsyncWeb3
 from web3.contract import Contract
 from web3.types import TxParams
 
